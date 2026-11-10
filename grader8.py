@@ -2,7 +2,7 @@
 from student_names import extract_student_name
 import ast, json, shutil, tempfile, zipfile, io
 from pathlib import Path
-from grader import unpack_zip, find_script, run_python, normalize_output
+from grader import unpack_zip, find_script, run_python, normalize_output, canonical_script_name
 
 QUESTIONS=['q1a','q1b','q2','q3a','q3b','q3c','q4','q5a','q5b','q5c','q6']
 CIPHER={chr(97+i):chr(97+(i+13)%26) for i in range(26)}
@@ -53,7 +53,8 @@ def grade_question(root,q,starter,solutions):
             for p in starter.iterdir():
                 if p.is_file() and p.suffix=='.txt':shutil.copy2(p,work/p.name)
         for p in script.parent.iterdir():
-            if p.is_file() and p.suffix=='.py' and p.stat().st_size<300000:shutil.copy2(p,student/p.name)
+            if p.is_file() and p.suffix.lower()=='.py' and p.stat().st_size<300000:
+                shutil.copy2(p,student/canonical_script_name(p.name))
         shutil.copy2(script,student/(q+'.py'))
         for p in solutions.glob('*.py'):shutil.copy2(p,reference/p.name)
         code=runner(q)

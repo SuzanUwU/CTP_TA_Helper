@@ -48,9 +48,20 @@ def unpack_zip(data, destination):
 
 
 def find_script(root, question):
-    matches=[p for p in root.rglob(question+'.py') if '__MACOSX' not in p.parts and not any(x.startswith('.') for x in p.relative_to(root).parts)]
+    matches=[p for p in root.rglob('*.py')
+             if p.name.lower().endswith(question.lower()+'.py')
+             and (p.stem.lower()==question.lower() or p.stem[-len(question)-1] in ' _-')
+             and '__MACOSX' not in p.parts
+             and not any(x.startswith('.') for x in p.relative_to(root).parts)]
     if not matches:return None
-    return sorted(matches,key=lambda p:(len(p.relative_to(root).parts),str(p).lower()))[0]
+    return sorted(matches,key=lambda p:(p.stem.lower()!=question.lower(),len(p.relative_to(root).parts),str(p).lower()))[0]
+
+
+def canonical_script_name(filename):
+    """Return the standard q*.py name for a prefixed LMS submission filename."""
+    stem=Path(filename).stem
+    match=re.search(r'(?:^|[\s_-])(q\d+[a-z]?)$',stem,re.IGNORECASE)
+    return match.group(1).lower()+'.py' if match else filename
 
 
 def run_python(work, code, timeout=4):
@@ -117,7 +128,8 @@ def grade_question(root, question, starter, solutions):
                 if p.is_file() and (p.suffix=='.txt' or p.name=='python_script.py'):shutil.copy2(p,work/p.name)
         # Copy student's adjacent Python files for legitimate local imports (e.g. q5b imports q5a).
         for p in script.parent.iterdir():
-            if p.is_file() and p.suffix=='.py' and p.stat().st_size<300000:shutil.copy2(p,student/p.name)
+            if p.is_file() and p.suffix.lower()=='.py' and p.stat().st_size<300000:
+                shutil.copy2(p,student/canonical_script_name(p.name))
         shutil.copy2(script,student/(question+'.py'))
         for p in solutions.glob('*.py'):shutil.copy2(p,reference/p.name)
         # Some reference scripts rely on starter files.

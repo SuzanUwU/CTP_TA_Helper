@@ -1,0 +1,48 @@
+{
+  "labs": {
+    "7": {
+      "starter": "assets/starter",
+      "solutions": "assets/solutions",
+      "questions": {
+        "q1a": {"function": "print_alternate_lines", "cases": [["q1-input-1.txt"], ["q1-input-2.txt"]]},
+        "q1b": {"function": "print_alternate_columns", "cases": [["q1-input-3.txt"], ["q1-input-4.txt"]]},
+        "q2a": {"function": "get_universities_founded_before", "cases": [["universities-1.txt", 1905], ["universities-2.txt", 1800]]},
+        "q2b": {"function": "get_average_num_students", "cases": [["universities-1.txt"], ["universities-2.txt"]]},
+        "q2c": {"function": "search_with_keyword", "cases": [["universities-1.txt", "california"], ["universities-2.txt", "university"]]},
+        "q3": {"compare": "q3_alternative_blocks"},
+        "q4a": {"output_file": "transactions-output-1.txt", "compare": "transactions"},
+        "q4b": {"output_file": "transactions-output-2.txt", "compare": "grouped_transactions"},
+        "q5a": {"function": "get_matrix", "cases": [["matrix.txt"]]},
+        "q5b": {"function": "get_matrix_transpose", "cases": [["matrix.txt"]]},
+        "q6": {
+          "output_file": "q6-output-1.txt",
+          "student_runner": "script_then_call",
+          "student_call": {"function": "extract_functions", "args": ["python_script.py", "q6-output-1.txt"]}
+        },
+        "q7": {"compare": "scrambled_words"}
+      },
+      "starter_extensions": [".txt"],
+      "starter_names": ["python_script.py"]
+    },
+    "8": {
+      "starter": "assets/lab8/starter",
+      "solutions": "assets/lab8/solutions",
+      "timeout": 5,
+      "questions": {
+        "q1a": {"function": "encrypt", "cases": [[{"a":"n","b":"o","c":"p","d":"q","e":"r","f":"s","g":"t","h":"u","i":"v","j":"w","k":"x","l":"y","m":"z","n":"a","o":"b","p":"c","q":"d","r":"e","s":"f","t":"g","u":"h","v":"i","w":"j","x":"k","y":"l","z":"m"}, "i love python"], [{"a":"n","b":"o","c":"p","d":"q","e":"r","f":"s","g":"t","h":"u","i":"v","j":"w","k":"x","l":"y","m":"z","n":"a","o":"b","p":"c","q":"d","r":"e","s":"f","t":"g","u":"h","v":"i","w":"j","x":"k","y":"l","z":"m"}, "hello world"], [{"a":"n","b":"o","c":"p","d":"q","e":"r","f":"s","g":"t","h":"u","i":"v","j":"w","k":"x","l":"y","m":"z","n":"a","o":"b","p":"c","q":"d","r":"e","s":"f","t":"g","u":"h","v":"i","w":"j","x":"k","y":"l","z":"m"}, "abc xyz"]], "compare": "json_lines"},
+        "q1b": {"function": "decrypt", "cases": [[{"a":"n","b":"o","c":"p","d":"q","e":"r","f":"s","g":"t","h":"u","i":"v","j":"w","k":"x","l":"y","m":"z","n":"a","o":"b","p":"c","q":"d","r":"e","s":"f","t":"g","u":"h","v":"i","w":"j","x":"k","y":"l","z":"m"}, "v ybir clguba"], [{"a":"n","b":"o","c":"p","d":"q","e":"r","f":"s","g":"t","h":"u","i":"v","j":"w","k":"x","l":"y","m":"z","n":"a","o":"b","p":"c","q":"d","r":"e","s":"f","t":"g","u":"h","v":"i","w":"j","x":"k","y":"l","z":"m"}, "uryyb jbeyq"], [{"a":"n","b":"o","c":"p","d":"q","e":"r","f":"s","g":"t","h":"u","i":"v","j":"w","k":"x","l":"y","m":"z","n":"a","o":"b","p":"c","q":"d","r":"e","s":"f","t":"g","u":"h","v":"i","w":"j","x":"k","y":"l","z":"m"}, "nop klm"]], "compare": "json_lines"},
+        "q2": {"function": "create_prime_dict", "cases": [[[2,3,5,10,20,23]], [[4,5,6,8,11,12]], [[13,17,21,25,29]]], "compare": "json_lines"},
+        "q3a": {"input_mode": "first_facility", "input_file": "facilities.txt", "timeout": 5},
+        "q3b": {"input_mode": "first_school", "input_file": "facilities.txt", "timeout": 5},
+        "q3c": {"input_mode": "first_school_with_count", "input_file": "facilities.txt", "count": 30, "timeout": 5},
+        "q4": {"function": "get_students_by_school", "cases": [[{"Joe Tan":"SIS","Alan Lee":"SOE","George Wong":"SOSS","Liu Chee Hwa":"SOL","Ng Yew Tung":"SIS","Wendy Li":"SIS","Jerry Lim":"SOSS"}], [{"A":"X","B":"X","C":"Y"}]], "compare": "json_lines"},
+        "q5a": {"function": "count_words_in_file", "cases": [["spam_sms.txt"]], "compare": "json_lines"},
+        "q5b": {"compare": "sorted_lines"},
+        "q5c": {"compare": "dictionary_pairs"},
+        "q6": {"function": "create_employee_dictionary", "runner": "function_definitions", "cases": [["employees.txt"]], "compare": "json_lines", "input": "999999\nN\n", "timeout": 5}
+      },
+      "starter_extensions": [".txt"],
+      "starter_names": []
+    }
+  }
+}

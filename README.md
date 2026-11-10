@@ -30,5 +30,5 @@ Lab 8 Q6 uses the function `create_employee_dictionary` instead of the interacti
 - `grader.py`: shared grading engine for both labs
 - `settings.json`: lab resources, question lists, test cases, inputs, and comparison modes
 - `templates/index.html`: shared interface
-- `assets/starter` and `assets/solutions`: Lab 7 inputs and references
-- `assets/lab8/starter` and `assets/lab8/solutions`: Lab 8 inputs and references
+- `assets/lab7/starter` and `assets/lab7/solutions`: Lab 7 input files and reference implementations
+- `assets/lab8/starter` and `assets/lab8/solutions`: Lab 8 input files and reference implementations

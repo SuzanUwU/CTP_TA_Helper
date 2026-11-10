@@ -1,8 +1,8 @@
 {
   "labs": {
     "7": {
-      "starter": "assets/starter",
-      "solutions": "assets/solutions",
+      "starter": "assets/lab7/starter",
+      "solutions": "assets/lab7/solutions",
       "questions": {
         "q1a": {"function": "print_alternate_lines", "cases": [["q1-input-1.txt"], ["q1-input-2.txt"]]},
         "q1b": {"function": "print_alternate_columns", "cases": [["q1-input-3.txt"], ["q1-input-4.txt"]]},
